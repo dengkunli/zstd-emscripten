@@ -4,3 +4,5 @@ _ZSTD_initDStream
 _ZSTD_DStreamInSize
 _ZSTD_DStreamOutSize
 _ZSTD_decompressStream_simpleArgs
+_malloc
+_free

@@ -151,3 +151,5 @@ _ZSTD_getBlockSize
 _ZSTD_compressBlock
 _ZSTD_decompressBlock
 _ZSTD_insertBlock
+_malloc
+_free

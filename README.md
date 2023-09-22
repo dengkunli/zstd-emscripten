@@ -1,14 +1,10 @@
 # Zstd Emscripten build
 
-This build is based on [facebook/zstd](https://github.com/facebook/zstd) and provides a thin WebAssembly wrapper around the zstd.h API. Please see [index.html](https://kig.github.io/zstd-emscripten/) for a demo and usage example.
+This repo forks from [kig/zstd-emscripten](https://github.com/kig/zstd-emscripten), keeps upstream zstd dependency up-to-date, tweak the build to better suited for web, and fixes some bugs.
 
-This is a size-optimized build (ZSTD_MINIFY_LIB and ZSTD_NO_INLINE build flags). The build output is four versions of the binding: full, compress-only, decompress-only, and compress+decompress-only. The brotli-compressed size of the wasm varies from 23 kB decompress-only to 76kB full binding.
+This build is based on [facebook/zstd](https://github.com/facebook/zstd) and provides a thin WebAssembly wrapper around the zstd.h API.
 
-This repo tracks the upstream as a submodule. 
-
-The previous forked repo is [archived](https://github.com/kig/zstd-emscripten-archived/).
-
-Thanks to Fredrick R. Brennan for their awesome work bringing the forked repo up-to-date with upstream Zstandard and fixing the CMake build files.
+Thanks to Ilmari Heikkinen, Fredrick R. Brennan for their awesome work on the wasm build.
 
 ## Build
 
@@ -16,11 +12,13 @@ Skip the first line if you already have Emscripten set up.
 
 ```bash
 git clone https://github.com/emscripten-core/emsdk.git && cd emsdk && ./emsdk install latest && ./emsdk activate latest && source ./emsdk_env.sh && cd .. &&
-git clone https://github.com/kig/zstd-emscripten && cd zstd-emscripten && git submodule update --init &&
+git clone https://github.com/dengkunli/zstd-emscripten && cd zstd-emscripten && git submodule update --init &&
 mkdir -p build && cd build && emcmake cmake ../cmake/ && emmake make -j4 && cd .. &&
-serve -p 5000
-# open http://localhost:5000/index.html
+http-server . -p 8000
+# open http://localhost:8000
 ```
+
+The last line starts an http server using [http-server](https://www.npmjs.com/package/http-server), you can use any other utilities as you like.
 
 ## Usage
 
@@ -32,5 +30,5 @@ The compress-only and decompress-only versions of the library bind just a few fu
 
 ## License
 
-(c) 2016–2021 Ilmari Heikkinen, Fredrick R. Brennan. As with Zstd itself, this is dual-licensed under [BSD](LICENSE) and [GPLv2](COPYING).
+(c) 2016–2023 Ilmari Heikkinen, Fredrick R. Brennan, Kunli Deng. As with Zstd itself, this is dual-licensed under [BSD](LICENSE) and [GPLv2](COPYING).
 

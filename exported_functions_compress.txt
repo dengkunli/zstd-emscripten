@@ -4,3 +4,5 @@ _ZSTD_CStreamInSize
 _ZSTD_CStreamOutSize
 _ZSTD_initCStream
 _ZSTD_compressStream2_simpleArgs
+_malloc
+_free
